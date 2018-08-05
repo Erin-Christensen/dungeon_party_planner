@@ -22,4 +22,4 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
-[![Build Status](https://codeship.com/projects/<YOUR_PROJECT_UUID>/status?branch=master)
+[ ![Codeship Status for Erin-Christensen/dungeon_party_planner](https://app.codeship.com/projects/ac91a9c0-7b1b-0136-4f1f-0a9d05ff3877/status?branch=master)](https://app.codeship.com/projects/300685)
