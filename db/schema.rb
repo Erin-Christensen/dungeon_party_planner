@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 2018_08_05_231517) do
     t.string "name", null: false
     t.integer "level", default: 0
     t.string "image", null: false
-    t.text "task", default: ""
+    t.text "task", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_characters_on_user_id"
