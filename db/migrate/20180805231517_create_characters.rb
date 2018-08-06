@@ -5,7 +5,7 @@ class CreateCharacters < ActiveRecord::Migration[5.2]
       t.string :name, null: false
       t.integer :level, default: 0
       t.string :image, null: false
-      t.boolean :in_party, default: true
+      t.boolean :in_party, default: false
 
       t.timestamps null: false
     end
