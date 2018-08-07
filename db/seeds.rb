@@ -20,13 +20,13 @@ User.create(
 Character.create(
   user: User.first,
   name: "stronguy",
-  image: "warrior.jpg",
+  image: Rails.root.join('app','assets','images','characters','warrior.png'),
   task: "do 20 push ups"
 )
 
 Character.create(
   user: User.first,
   name: "smartguy",
-  image: "wizard.jpg",
+  image: Rails.root.join('app','assets','images','characters','wizard.png'),
   task: "do 20 books"
 )
