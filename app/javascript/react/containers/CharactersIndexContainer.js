@@ -40,7 +40,9 @@ class CharactersIndexContainer extends Component {
         <CharacterTile
           key={character.id}
           id={character.id}
-          image={character.image}
+          class_name={character.class_name}
+          level={character.level}
+          image_url={character.image_url}
           name={character.name}
           task={character.task}
         />

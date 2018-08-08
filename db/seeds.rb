@@ -19,14 +19,23 @@ User.create(
 
 Character.create(
   user: User.first,
-  name: "stronguy",
-  image: Rails.root.join('app','assets','images','characters','warrior.png'),
+  name: "Stronguy",
+  image_url: "https://s3.amazonaws.com/dungeon-party-planner-production/images/characters/fighter/1.png",
   task: "do 20 push ups"
 )
 
 Character.create(
   user: User.first,
-  name: "smartguy",
-  image: Rails.root.join('app','assets','images','characters','wizard.png'),
+  name: "Smartguy",
+  image_url: "https://s3.amazonaws.com/dungeon-party-planner-production/images/characters/wizard/1.png",
+  class_name: "wizard",
   task: "do 20 books"
+)
+
+Character.create(
+  user: User.first,
+  name: "Songguy",
+  image_url: "https://s3.amazonaws.com/dungeon-party-planner-production/images/characters/bard/1.png",
+  class_name: "bard",
+  task: "make a new friend"
 )
