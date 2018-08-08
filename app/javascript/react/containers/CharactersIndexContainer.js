@@ -50,6 +50,7 @@ class CharactersIndexContainer extends Component {
     }))
     return(
       <div>
+        <h2>Your Characters</h2>
         {characters}
       </div>
     )

@@ -5,4 +5,8 @@ class Api::V1::CharactersController < ApplicationController
     characters = Character.where(user: current_user.id)
     render json: characters
   end
+
+  def show
+    render json: Character.find(params[:id])
+  end
 end
