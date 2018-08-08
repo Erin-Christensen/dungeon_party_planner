@@ -1,4 +1,12 @@
 <p>
-  Modify me in `app/views/homes/index.html.erb` or change the root directive in
-  `config/routes.rb`
+  Welcome to the dungeon party planner! sign up to create a party!
 </p>
+<%- if current_user -%>
+            <li>
+              <%= link_to 'go to party', characters_path %>
+            </li>
+          <%- else -%>
+            <li><%= link_to 'Sign Up', new_user_registration_path %></li>
+            <li><%= link_to 'Sign In', new_user_session_path %></li>
+            <%= link_to 'go to party', characters_path %>
+          <%- end -%>
