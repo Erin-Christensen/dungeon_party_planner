@@ -10,21 +10,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_05_231517) do
+ActiveRecord::Schema.define(version: 2018_08_09_172523) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "characters", force: :cascade do |t|
     t.bigint "user_id", null: false
+    t.bigint "class_type_id", null: false
     t.string "name", null: false
     t.integer "level", default: 0
-    t.string "image_url", null: false
-    t.integer "class_name", default: 0
+    t.integer "image_tier", default: 0
     t.text "task", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["class_type_id"], name: "index_characters_on_class_type_id"
     t.index ["user_id"], name: "index_characters_on_user_id"
+  end
+
+  create_table "class_types", force: :cascade do |t|
+    t.string "name", null: false
+    t.text "description", null: false
+    t.integer "main_stat", null: false
+    t.text "suggested_task", null: false
+    t.string "image_url", null: false
   end
 
   create_table "users", force: :cascade do |t|

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import SkillTile from '../components/SkillTile';
+import CharacterShowTile from '../components/CharacterShowTile';
 
 class CharacterShowContainer extends Component {
   constructor(props) {
@@ -25,7 +26,7 @@ class CharacterShowContainer extends Component {
     .then(response => response.json())
     .then(body => {
       this.setState({
-        character: body
+        character: body.character
       })
     })
     .catch(error => console.error(`Error in venue show mount fetch: ${error.message}`));
@@ -33,15 +34,24 @@ class CharacterShowContainer extends Component {
 
   render(){
     let character = this.state.character
+    let className
+    let imageUrl
+    if(character.class_type){
+      className = character.class_type.name
+      imageUrl = character.class_type.image_url
+    }
+
     return(
       <div>
       <h2>Character</h2>
-        <div className="character_tile">
-            <img src={character.image_url} alt={character.name} />
-            <p>{character.class_name}</p>
-          <p>{character.name} || level: {character.level}</p>
-          <p>Task: {character.task}</p>
-        </div>
+        <CharacterShowTile
+          name={character.name}
+          task={character.task}
+          level={character.level}
+          className={className}
+          imageUrl={imageUrl}
+          imageTier={character.image_tier}
+        />
         <h2>Skills</h2>
         <SkillTile
 
