@@ -4,7 +4,7 @@ RSpec.describe Character, type: :model do
   describe "validations" do
     let!(:character) { FactoryBot.build(:character) }
     let!(:character2) { FactoryBot.build(:character, name: nil) }
-    let!(:character3) { FactoryBot.build(:character, image_url: nil) }
+    let!(:character3) { FactoryBot.build(:character, image_tier: nil) }
     let!(:character4) { FactoryBot.build(:character, task: "") }
 
     it "is not valid without a name" do
