@@ -25,9 +25,7 @@ class CharactersIndexContainer extends Component {
     .then(response => response.json())
     .then(body => {
       this.setState({
-        characters_array: body
-        //member: body.member,
-        //admin: body.admin
+        characters_array: body.characters
       })
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`));
@@ -36,13 +34,15 @@ class CharactersIndexContainer extends Component {
   render(){
 
     let characters = this.state.characters_array.map((character => {
+
       return(
         <CharacterTile
           key={character.id}
           id={character.id}
-          class_name={character.class_name}
+          className={character.class_type.name}
           level={character.level}
-          image_url={character.image_url}
+          image_url={character.class_type.image_url}
+          image_tier={character.image_tier}
           name={character.name}
           task={character.task}
         />
@@ -50,6 +50,7 @@ class CharactersIndexContainer extends Component {
     }))
     return(
       <div>
+        <h2>Your Characters</h2>
         {characters}
       </div>
     )

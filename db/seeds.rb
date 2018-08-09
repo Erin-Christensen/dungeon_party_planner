@@ -17,25 +17,39 @@ User.create(
   role: "admin"
 )
 
+ClassType.create(
+  name: "Fighter",
+  description: "Fighters share an unparalleled mastery with weapons and armor, and a thorough knowledge of the skills of combat.",
+  main_stat: "Strength",
+  suggested_task: "Do 20 push ups!",
+  image_url:"https://s3.amazonaws.com/dungeon-party-planner-production/images/characters/fighter/"
+)
+
+ClassType.create(
+  name: "Wizard",
+  description: "Always casting a bunch of spells.",
+  main_stat: "Intelligence",
+  suggested_task: "Push a branch to GitHub!",
+  image_url:"https://s3.amazonaws.com/dungeon-party-planner-production/images/characters/wizard/"
+)
+
 Character.create(
   user: User.first,
+  class_type: ClassType.first,
   name: "Stronguy",
-  image_url: "https://s3.amazonaws.com/dungeon-party-planner-production/images/characters/fighter/1.png",
   task: "do 20 push ups"
 )
 
 Character.create(
   user: User.first,
+  class_type: ClassType.last,
   name: "Smartguy",
-  image_url: "https://s3.amazonaws.com/dungeon-party-planner-production/images/characters/wizard/1.png",
-  class_name: "wizard",
   task: "do 20 books"
 )
 
 Character.create(
   user: User.first,
+  class_type: ClassType.first,
   name: "Songguy",
-  image_url: "https://s3.amazonaws.com/dungeon-party-planner-production/images/characters/bard/1.png",
-  class_name: "bard",
   task: "make a new friend"
 )
