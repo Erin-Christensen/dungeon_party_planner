@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router';
 import CharacterTile from '../components/CharacterTile';
 
 class CharactersIndexContainer extends Component {
@@ -48,10 +49,14 @@ class CharactersIndexContainer extends Component {
         />
       )
     }))
+    
     return(
       <div>
         <h2>Your Characters</h2>
         {characters}
+        <Link to={'/characters/new'}>
+          Add a Character
+        </Link>
       </div>
     )
   }
