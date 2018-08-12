@@ -8,6 +8,37 @@ class CharactersIndexContainer extends Component {
     this.state = {
       characters_array: [],
     }
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  handleClick(event){
+    let id = event.target.id
+    let level = this.state.characters_array.find(x => x.id == event.target.id ).level + 1;
+    let payload = {
+      level: level
+    }
+    fetch(`/api/v1/characters/${id}`, {
+      credentials: 'same-origin',
+      method: 'PATCH',
+      body: JSON.stringify(payload),
+      headers: {'Content-Type': 'application/json'}
+    })
+    .then(response => {
+      if (response.ok) {
+        return response;
+      } else {
+        let errorMessage = `${response.status} (${response.statusText})`,
+            error = new Error(errorMessage);
+        throw(error);
+      }
+    })
+    .then(response => response.json())
+    .then(body => {
+      this.setState({
+        characters_array: body.characters
+      })
+    })
+    .catch(error => console.error(`Error in fetch: ${error.message}`));
   }
 
   componentDidMount(){
@@ -46,10 +77,11 @@ class CharactersIndexContainer extends Component {
           image_tier={character.image_tier}
           name={character.name}
           task={character.task}
+          onClick={this.handleClick}
         />
       )
     }))
-    
+
     return(
       <div>
         <h2>Your Characters</h2>

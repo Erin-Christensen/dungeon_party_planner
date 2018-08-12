@@ -14,7 +14,6 @@ class Api::V1::CharactersController < ApplicationController
   def new; end
 
   def create
-
     character = Character.new(character_params)
     character.user = current_user
     if character.save
@@ -24,7 +23,22 @@ class Api::V1::CharactersController < ApplicationController
     end
   end
 
+  def update
+    character = Character.find(params[:id])
+    if character.update(update_params)
+      characters = Character.where(user: current_user.id)
+      render json: characters
+    else
+      render json: { errors: character.errors.full_messages}
+    end
+  end
+
   private
+
+  def update_params
+    params.permit(:level)
+  end
+
   def character_params
     params.permit(:name, :task, :class_type_id)
   end

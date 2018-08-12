@@ -10,7 +10,12 @@ const CharacterTile = (props) => {
         <p>{props.className}</p>
       </Link>
       <p>{props.name} || level: {props.level}</p>
-      <p>Task: {props.task}</p>
+      <div>
+        <p>Task: {props.task}</p>
+        <button className="task_button" id={props.id} onClick={props.onClick}>
+              Complete Task
+        </button>
+      </div>
     </div>
   )
 }
