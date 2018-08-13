@@ -43,7 +43,7 @@ class CharacterShowContainer extends Component {
 
     return(
       <div>
-      <h2>Character</h2>
+        <h2>Character</h2>
         <CharacterShowTile
           name={character.name}
           task={character.task}

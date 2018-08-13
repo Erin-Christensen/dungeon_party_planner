@@ -1,7 +1,10 @@
 .character_tile {
+  padding: 10px;
   box-shadow: 0 2px 6px 0 hsla(0, 0%, 0%, 0.2);
   width: 600px;
-  margin-left: 40px;
+  margin-top: 15px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .detail {
@@ -9,3 +12,19 @@
   width: 600px;
   height: 200px;
 }
+
+.detail_image {
+  width: 200px;
+}
+
+.task_button {
+  margin-left: 5%;
+}
+
+.task_button:hover {
+  background-color: blue;
+}
+
+h2 {
+  text-align: center;
+ }

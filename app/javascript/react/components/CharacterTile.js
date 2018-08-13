@@ -7,11 +7,11 @@ const CharacterTile = (props) => {
     <div className="character_tile">
       <Link to={`/characters/${props.id}`}>
         <img src={image} alt={props.name} />
-        <p>{props.className}</p>
+        {props.name}
       </Link>
-      <p>{props.name} || level: {props.level}</p>
+      <p>{props.className} || level: {props.level}</p>
       <div>
-        <p>Task: {props.task}</p>
+        Task: {props.task}
         <button className="task_button" id={props.id} onClick={props.onClick}>
               Complete Task
         </button>

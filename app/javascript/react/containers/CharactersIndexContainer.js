@@ -20,7 +20,7 @@ class CharactersIndexContainer extends Component {
     fetch(`/api/v1/characters/${id}`, {
       credentials: 'same-origin',
       method: 'PATCH',
-      body: JSON.stringify(payload),
+      //body: JSON.stringify(payload),
       headers: {'Content-Type': 'application/json'}
     })
     .then(response => {
@@ -87,8 +87,10 @@ class CharactersIndexContainer extends Component {
         <h2>Your Characters</h2>
         {characters}
         <Link to={'/characters/new'}>
+        <button type="button">
           Add a Character
-        </Link>
+          </button>
+          </Link>
       </div>
     )
   }
