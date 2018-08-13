@@ -13,14 +13,9 @@ class CharactersIndexContainer extends Component {
 
   handleClick(event){
     let id = event.target.id
-    let level = this.state.characters_array.find(x => x.id == event.target.id ).level + 1;
-    let payload = {
-      level: level
-    }
     fetch(`/api/v1/characters/${id}`, {
       credentials: 'same-origin',
       method: 'PATCH',
-      //body: JSON.stringify(payload),
       headers: {'Content-Type': 'application/json'}
     })
     .then(response => {
