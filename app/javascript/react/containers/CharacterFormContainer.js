@@ -18,12 +18,7 @@ class CharacterFormContainer extends Component {
   }
 
   handleSelect(event) {
-    let selected;
-    this.state.class_array.forEach( classType =>{
-      if(classType.id == event.target.value){
-        selected = classType
-      }
-    })
+    let selected = this.state.class_array.find(x => x.id == event.target.value );
     this.setState({
       selected_class: selected,
       task: "Suggestion: " + selected.suggested_task
@@ -102,33 +97,36 @@ class CharacterFormContainer extends Component {
     let classType = this.state.selected_class
 
     return(
-      <div>
+      <div className="row">
         <ClassDetailTile
           name={classType.name}
           stat={classType.main_stat}
           description={classType.description}
+          imageUrl={classType.image_url}
         />
-        <form onSubmit={this.handleSubmit}>
-          <label>
-            Choose a Class:
-            <select value={this.state.selected_class.id} onChange={this.handleSelect}>
-              {classOptions}
-            </select>
-          </label>
-          <InputTile
-            name="name"
-            label="Choose a Character Name:"
-            value={this.state.name}
-            handleChange={this.handleChange}
-          />
-          <InputTile
-            name="task"
-            label="Give Your Hero a Task to Track:"
-            value={this.state.task}
-            handleChange={this.handleChange}
-          />
-          <input type="submit" value="Submit" />
-        </form>
+        <div className="column">
+          <form onSubmit={this.handleSubmit}>
+            <label>
+              Choose a Class:
+              <select value={this.state.selected_class.id} onChange={this.handleSelect}>
+                {classOptions}
+              </select>
+            </label>
+            <InputTile
+              name="name"
+              label="Choose a Character Name:"
+              value={this.state.name}
+              handleChange={this.handleChange}
+            />
+            <InputTile
+              name="task"
+              label="Give Your Hero a Task to Track:"
+              value={this.state.task}
+              handleChange={this.handleChange}
+            />
+            <button type="submit" className="task_button">submit</button>
+          </form>
+        </div>
       </div>
     )
   }

@@ -26,8 +26,16 @@ ClassType.create(
 )
 
 ClassType.create(
+  name: "Bard",
+  description: "Uses their charm and wit to amuse everyone. Is equally good at singing, juggling, and giving presentations in fron of the board of directors.",
+  main_stat: "Charisma",
+  suggested_task: "Practice that speech.",
+  image_url:"https://s3.amazonaws.com/dungeon-party-planner-production/images/characters/bard/"
+)
+
+ClassType.create(
   name: "Wizard",
-  description: "Always casting a bunch of spells.",
+  description: "Wields powerful spells after years of careful study. Always has a book or scroll.",
   main_stat: "Intelligence",
   suggested_task: "Push a branch to GitHub!",
   image_url:"https://s3.amazonaws.com/dungeon-party-planner-production/images/characters/wizard/"

@@ -4,6 +4,7 @@ class Api::V1::CharactersController < ApplicationController
 
   def index
     characters = Character.where(user: current_user.id)
+    characters = characters.sort
     render json: characters
   end
 
@@ -25,19 +26,20 @@ class Api::V1::CharactersController < ApplicationController
 
   def update
     character = Character.find(params[:id])
-    if character.update(update_params)
-      characters = Character.where(user: current_user.id)
-      render json: characters
+    if character.update(character.levelUp)
+      if params[:source]
+        render json: character
+      else
+        characters = Character.where(user: current_user.id)
+        characters = characters.sort
+        render json: characters
+      end
     else
       render json: { errors: character.errors.full_messages}
     end
   end
 
   private
-
-  def update_params
-    params.permit(:level)
-  end
 
   def character_params
     params.permit(:name, :task, :class_type_id)

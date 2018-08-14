@@ -13,14 +13,9 @@ class CharactersIndexContainer extends Component {
 
   handleClick(event){
     let id = event.target.id
-    let level = this.state.characters_array.find(x => x.id == event.target.id ).level + 1;
-    let payload = {
-      level: level
-    }
     fetch(`/api/v1/characters/${id}`, {
       credentials: 'same-origin',
       method: 'PATCH',
-      body: JSON.stringify(payload),
       headers: {'Content-Type': 'application/json'}
     })
     .then(response => {
@@ -34,6 +29,7 @@ class CharactersIndexContainer extends Component {
     })
     .then(response => response.json())
     .then(body => {
+      console.log(body)
       this.setState({
         characters_array: body.characters
       })
@@ -56,6 +52,7 @@ class CharactersIndexContainer extends Component {
     })
     .then(response => response.json())
     .then(body => {
+
       this.setState({
         characters_array: body.characters
       })
@@ -87,8 +84,10 @@ class CharactersIndexContainer extends Component {
         <h2>Your Characters</h2>
         {characters}
         <Link to={'/characters/new'}>
+        <button type="button" className="add_button">
           Add a Character
-        </Link>
+          </button>
+          </Link>
       </div>
     )
   }
