@@ -29,6 +29,7 @@ class CharactersIndexContainer extends Component {
     })
     .then(response => response.json())
     .then(body => {
+      console.log(body)
       this.setState({
         characters_array: body.characters
       })
@@ -51,6 +52,7 @@ class CharactersIndexContainer extends Component {
     })
     .then(response => response.json())
     .then(body => {
+
       this.setState({
         characters_array: body.characters
       })

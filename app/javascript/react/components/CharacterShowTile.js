@@ -11,6 +11,9 @@ const CharacterShowTile = (props) => {
       {props.statName}: {props.statValue}<br/>
       {props.name} || level: {props.level} || health: {props.health}<br/>
       Task: {props.task}<br/>
+      <button className="task_button" id={props.id} onClick={props.onClick}>
+            Complete Task
+      </button>
     </div>
   )
 }

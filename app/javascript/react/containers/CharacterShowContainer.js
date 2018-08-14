@@ -8,6 +8,33 @@ class CharacterShowContainer extends Component {
     this.state = {
       character: {}
     }
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  handleClick(event){
+    let payload = { source: 'show' }
+    fetch(`/api/v1/characters/${this.state.character.id}`, {
+      credentials: 'same-origin',
+      method: 'PATCH',
+      body: JSON.stringify(payload),
+      headers: {'Content-Type': 'application/json'}
+    })
+    .then(response => {
+      if (response.ok) {
+        return response;
+      } else {
+        let errorMessage = `${response.status} (${response.statusText})`,
+            error = new Error(errorMessage);
+        throw(error);
+      }
+    })
+    .then(response => response.json())
+    .then(body => {
+      this.setState({
+        character: body.character
+      })
+    })
+    .catch(error => console.error(`Error in fetch: ${error.message}`));
   }
 
   componentDidMount(){
@@ -47,6 +74,7 @@ class CharacterShowContainer extends Component {
       <div>
         <h2>Character</h2>
         <CharacterShowTile
+          id={character.id}
           name={character.name}
           task={character.task}
           level={character.level}
@@ -56,6 +84,7 @@ class CharacterShowContainer extends Component {
           statName={statName}
           statValue={character.stat}
           health={character.health}
+          onClick={this.handleClick}
         />
         <h2>Skills</h2>
         <SkillTile
