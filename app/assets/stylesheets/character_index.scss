@@ -1,0 +1,79 @@
+$bdc:  #000;
+$bkc:  #9E8431;
+$bkcw: #FFFFFF;
+$sc:  #aaa;
+
+.character_tile {
+  font-size: 1.2em;
+  padding: 10px;
+  box-shadow: 0 -3px $bkcw, 0 -6px $bdc, 3px 0 $bkcw, 3px -3px $bdc, 6px 0 $bdc, 0 3px $bkcw, 0 6px $bdc, -3px 0 $bkcw, -3px  3px $bdc, -6px 0 $bdc, -3px -3px $bdc, 3px 3px $bdc, 3px 9px $sc, 6px 6px $sc, 9px 3px $sc;
+  width: 600px;
+  margin-top: 2%;
+  margin-bottom: 2%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.detail {
+  padding: 2%;
+  margin-top: 5%;
+  margin-bottom: 5%;
+  font-size: 1.2em;
+  box-shadow: 0 -3px $bkcw, 0 -6px $bdc, 3px 0 $bkcw, 3px -3px $bdc, 6px 0 $bdc, 0 3px $bkcw, 0 6px $bdc, -3px 0 $bkcw, -3px  3px $bdc, -6px 0 $bdc, -3px -3px $bdc, 3px 3px $bdc, 3px 9px $sc, 6px 6px $sc, 9px 3px $sc;
+  height: 200px;
+}
+
+.class_detail {
+  padding: 2%;
+  margin-top: 5%;
+  margin-bottom: 5%;
+  font-size: 1.2em;
+  box-shadow: 0 -3px $bkcw, 0 -6px $bdc, 3px 0 $bkcw, 3px -3px $bdc, 6px 0 $bdc, 0 3px $bkcw, 0 6px $bdc, -3px 0 $bkcw, -3px  3px $bdc, -6px 0 $bdc, -3px -3px $bdc, 3px 3px $bdc, 3px 9px $sc, 6px 6px $sc, 9px 3px $sc;
+  height: 300px;
+}
+
+.task_button {
+  margin-top: 5%;
+  box-shadow: 0 -3px $bkc, 0 -6px $bdc, 3px 0 $bkc, 3px -3px $bdc, 6px 0 $bdc, 0 3px $bkc, 0 6px $bdc, -3px 0 $bkc, -3px  3px $bdc, -6px 0 $bdc, -3px -3px $bdc, 3px 3px $bdc, 3px 9px $sc, 6px 6px $sc, 9px 3px $sc;
+  display: inline-block;
+  float: right;
+}
+
+.task_button:hover {
+  background-color: #9e8431;
+}
+
+.add_button {
+  margin-left: 50%;
+  margin-top: 2%;
+  margin-bottom: 5%;
+  box-shadow: 0 -3px $bkc, 0 -6px $bdc, 3px 0 $bkc, 3px -3px $bdc, 6px 0 $bdc, 0 3px $bkc, 0 6px $bdc, -3px 0 $bkc, -3px  3px $bdc, -6px 0 $bdc, -3px -3px $bdc, 3px 3px $bdc, 3px 9px $sc, 6px 6px $sc, 9px 3px $sc;
+}
+
+.character_name {
+  margin-left: 5%;
+  display: inline-block;
+}
+
+.detail_image {
+  margin-bottom: 3%;
+  width: 80px;
+}
+
+.character_image {
+  margin-bottom: 1%;
+}
+
+h2 {
+  font-family: 'Press Start 2P', cursive;
+  text-align: center;
+ }
+
+ body {
+   font-size: 1.4em;
+ }
+
+label {
+  font-size: 1.6em;
+  color: black;
+}

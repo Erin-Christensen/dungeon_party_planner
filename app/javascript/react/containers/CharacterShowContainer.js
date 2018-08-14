@@ -36,9 +36,11 @@ class CharacterShowContainer extends Component {
     let character = this.state.character
     let className
     let imageUrl
+    let statName
     if(character.class_type){
       className = character.class_type.name
       imageUrl = character.class_type.image_url
+      statName = character.class_type.main_stat
     }
 
     return(
@@ -51,6 +53,9 @@ class CharacterShowContainer extends Component {
           className={className}
           imageUrl={imageUrl}
           imageTier={character.image_tier}
+          statName={statName}
+          statValue={character.stat}
+          health={character.health}
         />
         <h2>Skills</h2>
         <SkillTile

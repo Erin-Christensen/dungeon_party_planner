@@ -82,7 +82,7 @@ class CharactersIndexContainer extends Component {
         <h2>Your Characters</h2>
         {characters}
         <Link to={'/characters/new'}>
-        <button type="button">
+        <button type="button" className="add_button">
           Add a Character
           </button>
           </Link>

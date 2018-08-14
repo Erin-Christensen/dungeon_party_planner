@@ -37,9 +37,9 @@ class Api::V1::CharactersController < ApplicationController
 
   private
 
-  def update_params
-    params.permit(:level, :image_tier)
-  end
+  # def update_params
+  #   params.permit(:level, :image_tier)
+  # end
 
   def character_params
     params.permit(:name, :task, :class_type_id)
