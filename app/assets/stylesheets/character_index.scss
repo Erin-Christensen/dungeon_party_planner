@@ -5,10 +5,9 @@ $sc:  #aaa;
 
 .character_tile {
   font-size: 1.2em;
-  padding: 10px;
+  padding: 5px 10px 10px 10px;
   box-shadow: 0 -3px $bkcw, 0 -6px $bdc, 3px 0 $bkcw, 3px -3px $bdc, 6px 0 $bdc, 0 3px $bkcw, 0 6px $bdc, -3px 0 $bkcw, -3px  3px $bdc, -6px 0 $bdc, -3px -3px $bdc, 3px 3px $bdc, 3px 9px $sc, 6px 6px $sc, 9px 3px $sc;
   width: 600px;
-  margin-top: 2%;
   margin-bottom: 2%;
   margin-left: auto;
   margin-right: auto;
@@ -62,6 +61,20 @@ $sc:  #aaa;
 
 .character_image {
   margin-bottom: 1%;
+}
+
+.message_space {
+  height: 30px;
+  text-align: center;
+  margin: auto;
+  margin-bottom: 15px;
+  padding: 1px;
+}
+
+.message {
+  box-shadow: 0 -3px $bkcw, 0 -6px $bdc, 3px 0 $bkcw, 3px -3px $bdc, 6px 0 $bdc, 0 3px $bkcw, 0 6px $bdc, -3px 0 $bkcw, -3px  3px $bdc, -6px 0 $bdc, -3px -3px $bdc, 3px 3px $bdc, 3px 9px $sc, 6px 6px $sc, 9px 3px $sc;
+  background-color: pink;
+  font-size: .8em;
 }
 
 h2 {

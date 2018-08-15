@@ -3,8 +3,15 @@ import { Link } from 'react-router';
 
 const CharacterTile = (props) => {
   let image = props.image_url+props.image_tier+".png"
+  let message
+  if(props.message !== ""){
+    message = <div className="message">{props.message}</div>
+  }
   return(
     <div className="character_tile row">
+      <div className="message_space">
+        {message}
+      </div>
       <div  className="column small-8">
         <Link to={`/characters/${props.id}`}>
           <img className="character_image" src={image} alt={props.name} />

@@ -6,7 +6,7 @@ class CharactersIndexContainer extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      characters_array: [],
+      characters_array: []
     }
     this.handleClick = this.handleClick.bind(this);
   }
@@ -29,7 +29,6 @@ class CharactersIndexContainer extends Component {
     })
     .then(response => response.json())
     .then(body => {
-      console.log(body)
       this.setState({
         characters_array: body.characters
       })
@@ -63,7 +62,6 @@ class CharactersIndexContainer extends Component {
   render(){
 
     let characters = this.state.characters_array.map((character => {
-
       return(
         <CharacterTile
           key={character.id}
@@ -75,6 +73,7 @@ class CharactersIndexContainer extends Component {
           name={character.name}
           task={character.task}
           onClick={this.handleClick}
+          message={character.message}
         />
       )
     }))
