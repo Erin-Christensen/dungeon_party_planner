@@ -10,10 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_15_004630) do
+ActiveRecord::Schema.define(version: 2018_08_15_190129) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "character_skills", force: :cascade do |t|
+    t.bigint "character_id", null: false
+    t.bigint "skill_id", null: false
+    t.index ["character_id"], name: "index_character_skills_on_character_id"
+    t.index ["skill_id"], name: "index_character_skills_on_skill_id"
+  end
 
   create_table "characters", force: :cascade do |t|
     t.bigint "user_id", null: false
@@ -37,6 +44,12 @@ ActiveRecord::Schema.define(version: 2018_08_15_004630) do
     t.integer "main_stat", null: false
     t.text "suggested_task", null: false
     t.string "image_url", null: false
+  end
+
+  create_table "skills", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "description"
+    t.integer "class_name", null: false
   end
 
   create_table "users", force: :cascade do |t|

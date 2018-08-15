@@ -3,7 +3,8 @@ import React from 'react';
 const SkillTile = (props) => {
   return(
     <div className="character_tile">
-      hi im skill tile
+      {props.name}<br/>
+      {props.description}
     </div>
   )
 }

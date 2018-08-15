@@ -65,10 +65,22 @@ class CharacterShowContainer extends Component {
     let className
     let imageUrl
     let statName
+    let skills
     if(character.class_type){
       className = character.class_type.name
       imageUrl = character.class_type.image_url
       statName = character.class_type.main_stat
+    }
+
+    if(character.skills){
+      skills = character.skills.map((skill => {
+        return(
+          <SkillTile
+            name={skill.name}
+            description={skill.description}
+          />
+        )
+      }))
     }
 
     return(
@@ -91,9 +103,7 @@ class CharacterShowContainer extends Component {
         </div>
         <div className="column">
         <h2>Skills</h2>
-        <SkillTile
-
-        />
+          {skills}
         </div>
       </div>
     )

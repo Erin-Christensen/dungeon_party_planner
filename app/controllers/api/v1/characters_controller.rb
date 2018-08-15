@@ -27,6 +27,9 @@ class Api::V1::CharactersController < ApplicationController
   def update
     character = Character.find(params[:id])
     if character.update(character.levelUp)
+      if character.level%4 == 0
+        CharacterSkill.create(character: character, skill: Skill.all.sample)
+      end
       if params[:source]
         package = {
           character: CharacterSerializer.new(character)
