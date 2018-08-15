@@ -28,11 +28,17 @@ class Api::V1::CharactersController < ApplicationController
     character = Character.find(params[:id])
     if character.update(character.levelUp)
       if params[:source]
-        render json: character
+        package = {
+          character: CharacterSerializer.new(character)
+        }
+        render json: package
       else
         characters = Character.where(user: current_user.id)
         characters = characters.sort
-        render json: characters
+        package = {
+          characters: ActiveModel::Serializer::CollectionSerializer.new(characters, each_serializer: CharacterSerializer)
+        }
+        render json: package
       end
     else
       render json: { errors: character.errors.full_messages}

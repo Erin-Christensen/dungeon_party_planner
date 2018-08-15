@@ -6,7 +6,8 @@ class CharacterShowContainer extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      character: {}
+      character: {},
+      messages: []
     }
     this.handleClick = this.handleClick.bind(this);
   }
@@ -71,7 +72,8 @@ class CharacterShowContainer extends Component {
     }
 
     return(
-      <div>
+      <div className="row">
+        <div className="column">
         <h2>Character</h2>
         <CharacterShowTile
           id={character.id}
@@ -86,10 +88,13 @@ class CharacterShowContainer extends Component {
           health={character.health}
           onClick={this.handleClick}
         />
+        </div>
+        <div className="column">
         <h2>Skills</h2>
         <SkillTile
 
         />
+        </div>
       </div>
     )
   }
