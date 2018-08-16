@@ -28,7 +28,8 @@ class Api::V1::CharactersController < ApplicationController
     character = Character.find(params[:id])
     if character.update(character.levelUp)
       if character.level%4 == 0
-        CharacterSkill.create(character: character, skill: Skill.all.sample)
+        skills = Skill.where(class_name: character.class_type.name )
+        CharacterSkill.create(character: character, skill: skills.sample)
       end
       if params[:source]
         package = {

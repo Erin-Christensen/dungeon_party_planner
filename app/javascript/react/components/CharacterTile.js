@@ -18,12 +18,14 @@ const CharacterTile = (props) => {
           <h4 className="character_name">{props.name}</h4>
         </Link><br/>
         {props.className} || level: {props.level}<br/>
-        Task: {props.task}
       </div>
       <div  className="column small-4">
         <button className="task_button" id={props.id} onClick={props.onClick}>
-              Complete Task
+          Complete Task
         </button>
+      </div>
+      <div className="column">
+      Task: {props.task}
       </div>
     </div>
   )

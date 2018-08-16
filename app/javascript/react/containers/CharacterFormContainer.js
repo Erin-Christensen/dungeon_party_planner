@@ -56,8 +56,7 @@ class CharacterFormContainer extends Component {
     })
     .then(response => response.json())
     .then(body => {
-        //browserHistory.push(`/characters/${this.body.character.id}`)
-        this.props.router.push(`/characters/${body.character.id}`)
+        this.props.router.push(`/characters`)
       }
     )
     .catch(error => console.error(`Error in fetch: ${error.message}`));

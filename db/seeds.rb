@@ -43,20 +43,6 @@ Character.create(
   task: "do 20 push ups"
 )
 
-Character.create(
-  user: User.first,
-  class_type: ClassType.last,
-  name: "Smartguy",
-  task: "do 20 books"
-)
-
-Character.create(
-  user: User.first,
-  class_type: ClassType.first,
-  name: "Songguy",
-  task: "make a new friend"
-)
-
 #for bard
 10.times do
   Skill.create(
