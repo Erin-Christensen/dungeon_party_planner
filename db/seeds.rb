@@ -1,3 +1,4 @@
+require 'faker'
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
 #
@@ -9,12 +10,6 @@
 User.create(
   email: "squirtle@example.com",
   password: "password"
-)
-
-User.create(
-  email: "sonofchristensen@gmailcom",
-  password: "qwerty",
-  role: "admin"
 )
 
 ClassType.create(
@@ -48,16 +43,29 @@ Character.create(
   task: "do 20 push ups"
 )
 
-Character.create(
-  user: User.first,
-  class_type: ClassType.last,
-  name: "Smartguy",
-  task: "do 20 books"
-)
+#for bard
+10.times do
+  Skill.create(
+    name: Faker::Music.instrument,
+    description: Faker::Music.album,
+    class_name: 0
+  )
+end
 
-Character.create(
-  user: User.first,
-  class_type: ClassType.first,
-  name: "Songguy",
-  task: "make a new friend"
-)
+#for wizard
+10.times do
+  Skill.create(
+    name: Faker::Lovecraft.tome,
+    description: Faker::Lovecraft.fhtagn(3),
+    class_name: 1
+  )
+end
+
+#for fighter
+10.times do
+  Skill.create(
+    name: Faker::Superhero.power,
+    description: Faker::VentureBros.quote,
+    class_name: 2
+  )
+end

@@ -80,11 +80,11 @@ class CharactersIndexContainer extends Component {
 
     return(
       <div>
-        <h2>Your Characters</h2>
+        <h1>Your Characters</h1>
         {characters}
         <Link to={'/characters/new'}>
-        <button type="button" className="add_button">
-          Add a Character
+          <button type="button" className="add_button">
+            Add a Character
           </button>
           </Link>
       </div>

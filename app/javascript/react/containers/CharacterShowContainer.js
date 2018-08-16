@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router';
 import SkillTile from '../components/SkillTile';
 import CharacterShowTile from '../components/CharacterShowTile';
 
@@ -65,36 +66,50 @@ class CharacterShowContainer extends Component {
     let className
     let imageUrl
     let statName
+    let skills
     if(character.class_type){
       className = character.class_type.name
       imageUrl = character.class_type.image_url
       statName = character.class_type.main_stat
     }
 
-    return(
-      <div className="row">
-        <div className="column">
-        <h2>Character</h2>
-        <CharacterShowTile
-          id={character.id}
-          name={character.name}
-          task={character.task}
-          level={character.level}
-          className={className}
-          imageUrl={imageUrl}
-          imageTier={character.image_tier}
-          statName={statName}
-          statValue={character.stat}
-          health={character.health}
-          onClick={this.handleClick}
-        />
-        </div>
-        <div className="column">
-        <h2>Skills</h2>
-        <SkillTile
+    if(character.skills){
+      skills = character.skills.map((skill => {
+        return(
+          <SkillTile
+            key={skill.id}
+            name={skill.name}
+            description={skill.description}
+          />
+        )
+      }))
+    }
 
-        />
-        </div>
+    return(
+      <div>
+        <Link to={'/characters'}>
+          <button type="button" className="back_button">
+            Back
+          </button>
+        </Link>
+
+          <h2>{character.name}</h2>
+          <CharacterShowTile
+            id={character.id}
+            name={character.name}
+            task={character.task}
+            level={character.level}
+            className={className}
+            imageUrl={imageUrl}
+            imageTier={character.image_tier}
+            statName={statName}
+            statValue={character.stat}
+            health={character.health}
+            onClick={this.handleClick}
+          />
+
+          <h2>Skills</h2>
+            {skills}
       </div>
     )
   }
