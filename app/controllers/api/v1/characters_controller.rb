@@ -34,6 +34,7 @@ class Api::V1::CharactersController < ApplicationController
         CharacterSkill.create(character: character, skill: skills.sample)
       end
       if params[:source]
+        character.update({message: ""})
         package = {
           character: CharacterSerializer.new(character)
         }

@@ -120,8 +120,8 @@ class CharacterFormContainer extends Component {
             <InputTile
               name="task"
               label="Give Your Hero a Task to Track:"
-              value={this.state.task}
               placeholder={this.state.task}
+              value={this.state.task}
               handleChange={this.handleChange}
             />
             <button type="submit" className="submit_button">submit</button>

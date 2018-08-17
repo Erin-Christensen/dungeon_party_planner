@@ -8,8 +8,8 @@ const InputTile = (props) => {
         <input
           name={props.name}
           type="text"
-          value={props.value}
           placeholder={props.placeholder}
+          value={props.value}
           onChange={props.handleChange}
         />
       </label>
