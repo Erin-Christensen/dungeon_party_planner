@@ -6,7 +6,7 @@ const ClassDetailTile = (props) => {
     <div className="class_detail column">
         <img src={image} alt={props.name} className="detail_image"/>
         <h4 className="character_name">{props.name}</h4><br/>
-        Main Stat: {props.stat}<br/>
+        <h5 className="stat_name">Main Stat: {props.stat}</h5><br/>
         {props.description}
     </div>
   )

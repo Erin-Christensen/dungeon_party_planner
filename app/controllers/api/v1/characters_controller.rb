@@ -4,12 +4,14 @@ class Api::V1::CharactersController < ApplicationController
 
   def index
     characters = Character.where(user: current_user.id)
-    characters = characters.sort
+    characters = characters.sort.reverse
     render json: characters
   end
 
   def show
-    render json: Character.find(params[:id])
+    character = Character.find(params[:id])
+    character.update({message: ""})
+    render json: character
   end
 
   def new; end
@@ -38,7 +40,7 @@ class Api::V1::CharactersController < ApplicationController
         render json: package
       else
         characters = Character.where(user: current_user.id)
-        characters = characters.sort
+        characters = characters.sort.reverse
         package = {
           characters: ActiveModel::Serializer::CollectionSerializer.new(characters, each_serializer: CharacterSerializer)
         }

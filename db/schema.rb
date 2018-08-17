@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(version: 2018_08_15_190129) do
     t.datetime "updated_at", null: false
     t.integer "stat", default: 1, null: false
     t.integer "health", default: 10, null: false
-    t.string "message", default: "", null: false
+    t.string "message", default: "New Character Created!", null: false
     t.index ["class_type_id"], name: "index_characters_on_class_type_id"
     t.index ["user_id"], name: "index_characters_on_user_id"
   end

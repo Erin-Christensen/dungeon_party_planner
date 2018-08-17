@@ -44,7 +44,7 @@ Character.create(
 )
 
 #for bard
-10.times do
+20.times do
   Skill.create(
     name: Faker::Music.instrument,
     description: Faker::Music.album,
@@ -53,7 +53,7 @@ Character.create(
 end
 
 #for wizard
-10.times do
+20.times do
   Skill.create(
     name: Faker::Lovecraft.tome,
     description: Faker::Lovecraft.fhtagn(3),
@@ -62,7 +62,7 @@ end
 end
 
 #for fighter
-10.times do
+20.times do
   Skill.create(
     name: Faker::Superhero.power,
     description: Faker::VentureBros.quote,

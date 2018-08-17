@@ -9,6 +9,7 @@ const InputTile = (props) => {
           name={props.name}
           type="text"
           value={props.value}
+          placeholder={props.placeholder}
           onChange={props.handleChange}
         />
       </label>

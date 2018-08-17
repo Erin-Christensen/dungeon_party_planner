@@ -103,7 +103,7 @@ class CharacterFormContainer extends Component {
           description={classType.description}
           imageUrl={classType.image_url}
         />
-        <div className="column">
+        <div className="column" id="class_form">
           <form onSubmit={this.handleSubmit}>
             <label>
               Choose a Class:
@@ -121,9 +121,10 @@ class CharacterFormContainer extends Component {
               name="task"
               label="Give Your Hero a Task to Track:"
               value={this.state.task}
+              placeholder={this.state.task}
               handleChange={this.handleChange}
             />
-            <button type="submit" className="task_button">submit</button>
+            <button type="submit" className="submit_button">submit</button>
           </form>
         </div>
       </div>
