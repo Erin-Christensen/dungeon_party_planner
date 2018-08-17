@@ -10,6 +10,7 @@ class CharacterFormContainer extends Component {
       class_array: [],
       selected_class: {},
       name: "",
+      placeholder: "",
       task: ""
     }
     this.handleSelect = this.handleSelect.bind(this);
@@ -21,7 +22,8 @@ class CharacterFormContainer extends Component {
     let selected = this.state.class_array.find(x => x.id == event.target.value );
     this.setState({
       selected_class: selected,
-      task: "Suggestion: " + selected.suggested_task
+      placeholder: "Suggestion: " + selected.suggested_task,
+      task: ""
     });
   }
 
@@ -80,7 +82,7 @@ class CharacterFormContainer extends Component {
       this.setState({
         class_array: body.class_types,
         selected_class: body.class_types[0],
-        task: "Suggestion: " + body.class_types[0].suggested_task
+        placeholder: "Suggestion: " + body.class_types[0].suggested_task
       })
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`));
@@ -88,9 +90,13 @@ class CharacterFormContainer extends Component {
 
   render(){
     let classOptions = this.state.class_array.map((class_type => {
-        return(
-            <option value={class_type.id} key={class_type.id}>{class_type.name}</option>
-        )
+          return(
+            <div className="column small-4">
+              <button type="button" className="class_button column" key={class_type.id} value={class_type.id} onClick={this.handleSelect}>
+                {class_type.name}
+              </button>
+            </div>
+          )
       }))
 
     let classType = this.state.selected_class
@@ -107,9 +113,9 @@ class CharacterFormContainer extends Component {
           <form onSubmit={this.handleSubmit}>
             <label>
               Choose a Class:
-              <select value={this.state.selected_class.id} onChange={this.handleSelect}>
+              <div className="row">
                 {classOptions}
-              </select>
+              </div>
             </label>
             <InputTile
               name="name"
@@ -120,7 +126,7 @@ class CharacterFormContainer extends Component {
             <InputTile
               name="task"
               label="Give Your Hero a Task to Track:"
-              placeholder={this.state.task}
+              placeholder={this.state.placeholder}
               value={this.state.task}
               handleChange={this.handleChange}
             />

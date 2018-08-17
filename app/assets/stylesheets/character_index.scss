@@ -165,6 +165,26 @@ label {
   color: black;
 }
 
+.class_button{
+  color: black;
+
+  text-align: center;
+  background-color: white;
+  box-shadow: 0 -3px $bkcw, 0 -6px $bdc, 3px 0 $bkcw, 3px -3px $bdc, 6px 0 $bdc, 0 3px $bkcw, 0 6px $bdc, -3px 0 $bkcw, -3px  3px $bdc, -6px 0 $bdc, -3px -3px $bdc, 3px 3px $bdc, 3px 9px $sc, 6px 6px $sc, 9px 3px $sc;
+}
+
+.class_button:hover{
+  color: black;
+  background-color: $sc2;
+}
+
+.class_button:focus{
+  color: black;
+  background-color: $sc;
+  box-shadow: 0 -3px $sc, 0 -6px $bdc, 3px 0 $sc, 3px -3px $bdc, 6px 0 $bdc, 0 3px $sc, 0 6px $bdc, -3px 0 $sc, -3px  3px $bdc, -6px 0 $bdc, -3px -3px $bdc, 3px 3px $bdc;
+  transform: translateY(4px);
+}
+
 input:not([type]), input[type="text"], input[type="password"], input[type="date"], input[type="datetime"], input[type="datetime-local"], input[type="month"], input[type="week"], input[type="email"], input[type="number"], input[type="search"], input[type="tel"], input[type="time"], input[type="url"], input[type="color"], textarea {
   font-size: .6em;
 }

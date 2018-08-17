@@ -22,7 +22,7 @@ ClassType.create(
 
 ClassType.create(
   name: "Bard",
-  description: "Uses their charm and wit to amuse everyone. Is equally good at singing, juggling, and giving presentations in fron of the board of directors.",
+  description: "Uses their charm and wit to amuse everyone. Is equally good at singing, juggling, and giving presentations in front of the board of directors.",
   main_stat: "Charisma",
   suggested_task: "Practice that speech.",
   image_url:"https://s3.amazonaws.com/dungeon-party-planner-production/images/characters/bard/"
@@ -30,7 +30,7 @@ ClassType.create(
 
 ClassType.create(
   name: "Wizard",
-  description: "Wields powerful spells after years of careful study. Always has a book or scroll.",
+  description: "Wields powerful spells after years of careful study. Always has a book or scroll. Fireballs for weeks. He's lit.",
   main_stat: "Intelligence",
   suggested_task: "Push a branch to GitHub!",
   image_url:"https://s3.amazonaws.com/dungeon-party-planner-production/images/characters/wizard/"
@@ -44,7 +44,7 @@ Character.create(
 )
 
 #for bard
-20.times do
+30.times do
   Skill.create(
     name: Faker::Music.instrument,
     description: Faker::Music.album,
@@ -53,16 +53,16 @@ Character.create(
 end
 
 #for wizard
-20.times do
+30.times do
   Skill.create(
     name: Faker::Lovecraft.tome,
-    description: Faker::Lovecraft.fhtagn(3),
+    description: Faker::GreekPhilosophers.quote + Faker::Lovecraft.fhtagn,
     class_name: 1
   )
 end
 
 #for fighter
-20.times do
+30.times do
   Skill.create(
     name: Faker::Superhero.power,
     description: Faker::VentureBros.quote,
