@@ -38,7 +38,7 @@ ClassType.create(
 
 Character.create(
   user: User.first,
-  class_type: "Wizard",
+  class_type: ClassType.last,
   name: "Grandolph",
   task: "read a book"
 )
