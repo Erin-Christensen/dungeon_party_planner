@@ -2,7 +2,8 @@ $bdc:  #000;
 $bkc:  #9E8431;
 $bkcw: #FFFFFF;
 $sc:  #aaa;
-$bkcm: pink;
+$sc2: #eee;
+$bkcm: lightblue;
 
 .character_tile {
   font-size: 1.2em;
@@ -14,22 +15,48 @@ $bkcm: pink;
   margin-right: auto;
 }
 
-.detail {
+#class_form {
   padding: 2%;
   margin-top: 5%;
   margin-bottom: 5%;
+  margin-left: auto;
+  margin-right: auto;
+  float: none;
   font-size: 1.2em;
   box-shadow: 0 -3px $bkcw, 0 -6px $bdc, 3px 0 $bkcw, 3px -3px $bdc, 6px 0 $bdc, 0 3px $bkcw, 0 6px $bdc, -3px 0 $bkcw, -3px  3px $bdc, -6px 0 $bdc, -3px -3px $bdc, 3px 3px $bdc, 3px 9px $sc, 6px 6px $sc, 9px 3px $sc;
-  height: 200px;
+  width: 600px;
+}
+
+select {
+  font-size: .6em;
+  height: auto;
+}
+
+option {
+  font-family: 'VT323', monospace;
+}
+.stat_name {
+  margin-bottom: 3%;
+  display: inline-block;
 }
 
 .class_detail {
+  float: none;
   padding: 2%;
   margin-top: 5%;
   margin-bottom: 5%;
+  margin-left: auto;
+  margin-right: auto;
   font-size: 1.2em;
   box-shadow: 0 -3px $bkcw, 0 -6px $bdc, 3px 0 $bkcw, 3px -3px $bdc, 6px 0 $bdc, 0 3px $bkcw, 0 6px $bdc, -3px 0 $bkcw, -3px  3px $bdc, -6px 0 $bdc, -3px -3px $bdc, 3px 3px $bdc, 3px 9px $sc, 6px 6px $sc, 9px 3px $sc;
+  width: 600px;
   height: 300px;
+}
+
+.submit_button {
+  margin-top: 5%;
+  box-shadow: 0 -3px $bkc, 0 -6px $bdc, 3px 0 $bkc, 3px -3px $bdc, 6px 0 $bdc, 0 3px $bkc, 0 6px $bdc, -3px 0 $bkc, -3px  3px $bdc, -6px 0 $bdc, -3px -3px $bdc, 3px 3px $bdc, 3px 9px $sc, 6px 6px $sc, 9px 3px $sc;
+  display: inline-block;
 }
 
 .task_button {
@@ -43,6 +70,20 @@ $bkcm: pink;
   background-color: #9e8431;
 }
 
+.task_button:active {
+  background-color: #9e8431;
+  box-shadow: 0 -3px $bkc, 0 -6px $bdc, 3px 0 $bkc, 3px -3px $bdc, 6px 0 $bdc, 0 3px $bkc, 0 6px $bdc, -3px 0 $bkc, -3px  3px $bdc, -6px 0 $bdc, -3px -3px $bdc, 3px 3px $bdc, 3px 5px $sc, 6px 1px $sc;
+  transform: translateY(4px);
+}
+
+.move_right {
+  padding-right: 5px;
+}
+
+.move_left {
+  padding-left: 5px;
+}
+
 .add_button {
   margin-left: 50%;
   margin-top: 2%;
@@ -50,8 +91,14 @@ $bkcm: pink;
   box-shadow: 0 -3px $bkc, 0 -6px $bdc, 3px 0 $bkc, 3px -3px $bdc, 6px 0 $bdc, 0 3px $bkc, 0 6px $bdc, -3px 0 $bkc, -3px  3px $bdc, -6px 0 $bdc, -3px -3px $bdc, 3px 3px $bdc, 3px 9px $sc, 6px 6px $sc, 9px 3px $sc;
 }
 
+.task {
+  margin-top: 2%;
+  box-shadow: 0 -3px $sc2, 0 -6px $sc2, 3px 0 $sc2, 3px -3px $sc2, 6px 0 $sc2, 0 3px $sc2, 0 6px $sc2, -3px 0 $sc2, -3px  3px $sc2, -6px 0 $sc2, -3px -3px $sc2, 3px 3px $sc2;
+  background-color: $sc2;
+}
+
 .character_name {
-  margin-left: 5%;
+  margin-left: 10%;
   display: inline-block;
 }
 
@@ -74,13 +121,23 @@ $bkcm: pink;
 
 .message {
   box-shadow: 0 -3px $bkcm, 0 -6px $bdc, 3px 0 $bkcm, 3px -3px $bdc, 6px 0 $bdc, 0 3px $bkcm, 0 6px $bdc, -3px 0 $bkcm, -3px  3px $bdc, -6px 0 $bdc, -3px -3px $bdc, 3px 3px $bdc, 3px 9px $sc, 6px 6px $sc, 9px 3px $sc;
-  background-color: pink;
+  background-color: lightblue;
   font-size: .8em;
+  animation-name: fade;
+  animation-duration: .5s;
+  animation-delay: 1s;
+  animation-timing-function: ease-in;
+  animation-fill-mode: forwards;
 }
 
 .back_button {
   background-color: black;
   margin-bottom: 0px;
+}
+
+@keyframes fade {
+    from {opacity: 1;}
+    to {opacity: 0;}
 }
 
 button:focus {
@@ -106,4 +163,36 @@ h2 {
 label {
   font-size: 1.6em;
   color: black;
+}
+
+.class_button{
+  color: black;
+
+  text-align: center;
+  background-color: white;
+  box-shadow: 0 -3px $bkcw, 0 -6px $bdc, 3px 0 $bkcw, 3px -3px $bdc, 6px 0 $bdc, 0 3px $bkcw, 0 6px $bdc, -3px 0 $bkcw, -3px  3px $bdc, -6px 0 $bdc, -3px -3px $bdc, 3px 3px $bdc, 3px 9px $sc, 6px 6px $sc, 9px 3px $sc;
+}
+
+.class_button:hover{
+  color: black;
+  background-color: $sc2;
+}
+
+.class_button:focus{
+  color: black;
+  background-color: $sc;
+  box-shadow: 0 -3px $sc, 0 -6px $bdc, 3px 0 $sc, 3px -3px $bdc, 6px 0 $bdc, 0 3px $sc, 0 6px $bdc, -3px 0 $sc, -3px  3px $bdc, -6px 0 $bdc, -3px -3px $bdc, 3px 3px $bdc;
+  transform: translateY(4px);
+}
+
+.submit_errors {
+  padding: 15px;
+}
+
+.error_message {
+  color: red;
+}
+
+input:not([type]), input[type="text"], input[type="password"], input[type="date"], input[type="datetime"], input[type="datetime-local"], input[type="month"], input[type="week"], input[type="email"], input[type="number"], input[type="search"], input[type="tel"], input[type="time"], input[type="url"], input[type="color"], textarea {
+  font-size: .6em;
 }

@@ -10,7 +10,9 @@ class CharacterFormContainer extends Component {
       class_array: [],
       selected_class: {},
       name: "",
-      task: ""
+      placeholder: "",
+      task: "",
+      errors: []
     }
     this.handleSelect = this.handleSelect.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -21,7 +23,8 @@ class CharacterFormContainer extends Component {
     let selected = this.state.class_array.find(x => x.id == event.target.value );
     this.setState({
       selected_class: selected,
-      task: "Suggestion: " + selected.suggested_task
+      placeholder: "Suggestion: " + selected.suggested_task,
+      task: ""
     });
   }
 
@@ -37,7 +40,6 @@ class CharacterFormContainer extends Component {
         task: this.state.task,
         class_type_id: this.state.selected_class.id
     }
-
 
     fetch('/api/v1/characters', {
       credentials: 'same-origin',
@@ -56,7 +58,13 @@ class CharacterFormContainer extends Component {
     })
     .then(response => response.json())
     .then(body => {
-        this.props.router.push(`/characters`)
+        if(body.errors) {
+          this.setState({
+            errors: body.errors,
+          })
+        } else {
+          this.props.router.push(`/characters`)
+        }
       }
     )
     .catch(error => console.error(`Error in fetch: ${error.message}`));
@@ -79,8 +87,6 @@ class CharacterFormContainer extends Component {
     .then(body => {
       this.setState({
         class_array: body.class_types,
-        selected_class: body.class_types[0],
-        task: "Suggestion: " + body.class_types[0].suggested_task
       })
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`));
@@ -88,42 +94,69 @@ class CharacterFormContainer extends Component {
 
   render(){
     let classOptions = this.state.class_array.map((class_type => {
-        return(
-            <option value={class_type.id} key={class_type.id}>{class_type.name}</option>
-        )
+          return (
+            <div className="column small-4" key={class_type.id}>
+              <button type="button" className="class_button column"  value={class_type.id} onClick={this.handleSelect}>
+                {class_type.name}
+              </button>
+            </div>
+          )
       }))
 
     let classType = this.state.selected_class
+    let classDetail
+    let errors = this.state.errors.map((error => {
+      return (
+        <span className="error_message">{error} <br/></span>
+      )
+    }))
+
+    if(this.state.placeholder === ""){
+      classDetail =
+      <ClassDetailTile
+        name="Choose a Class Below"
+        stat=""
+        description=""
+        imageUrl=""
+      />
+    } else {
+      classDetail=
+      <ClassDetailTile
+        name={classType.name}
+        stat={"Main Stat: " + classType.main_stat}
+        description={classType.description}
+        imageUrl={classType.image_url}
+      />
+    }
 
     return(
       <div className="row">
-        <ClassDetailTile
-          name={classType.name}
-          stat={classType.main_stat}
-          description={classType.description}
-          imageUrl={classType.image_url}
-        />
-        <div className="column">
+        {classDetail}
+        <div className="column" id="class_form">
           <form onSubmit={this.handleSubmit}>
             <label>
               Choose a Class:
-              <select value={this.state.selected_class.id} onChange={this.handleSelect}>
+              <div className="row">
                 {classOptions}
-              </select>
+              </div>
             </label>
+            <InputTile
+            name="task"
+            label="Give Your Hero a Task to Track:"
+            placeholder={this.state.placeholder}
+            value={this.state.task}
+            handleChange={this.handleChange}
+            />
             <InputTile
               name="name"
               label="Choose a Character Name:"
               value={this.state.name}
               handleChange={this.handleChange}
             />
-            <InputTile
-              name="task"
-              label="Give Your Hero a Task to Track:"
-              value={this.state.task}
-              handleChange={this.handleChange}
-            />
-            <button type="submit" className="task_button">submit</button>
+            <div className="row submit_errors">
+            <button type="submit" className="submit_button column small-4">submit</button>
+            <div className="column small-7">{errors}</div>
+            </div>
           </form>
         </div>
       </div>

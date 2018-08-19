@@ -86,13 +86,7 @@ class CharacterShowContainer extends Component {
     }
 
     return(
-      <div>
-        <Link to={'/characters'}>
-          <button type="button" className="back_button">
-            Back
-          </button>
-        </Link>
-
+      <div>  
           <h2>{character.name}</h2>
           <CharacterShowTile
             id={character.id}
