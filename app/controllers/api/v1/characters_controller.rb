@@ -22,7 +22,7 @@ class Api::V1::CharactersController < ApplicationController
     if character.save
       render json: character
     else
-      render json: character.errors
+      render json: {errors: character.errors.full_messages}
     end
   end
 

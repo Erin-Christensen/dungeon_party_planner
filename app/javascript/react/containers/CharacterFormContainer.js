@@ -11,7 +11,8 @@ class CharacterFormContainer extends Component {
       selected_class: {},
       name: "",
       placeholder: "",
-      task: ""
+      task: "",
+      errors: []
     }
     this.handleSelect = this.handleSelect.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -40,7 +41,6 @@ class CharacterFormContainer extends Component {
         class_type_id: this.state.selected_class.id
     }
 
-
     fetch('/api/v1/characters', {
       credentials: 'same-origin',
       method: 'POST',
@@ -58,7 +58,13 @@ class CharacterFormContainer extends Component {
     })
     .then(response => response.json())
     .then(body => {
-        this.props.router.push(`/characters`)
+        if(body.errors) {
+          this.setState({
+            errors: body.errors,
+          })
+        } else {
+          this.props.router.push(`/characters`)
+        }
       }
     )
     .catch(error => console.error(`Error in fetch: ${error.message}`));
@@ -81,8 +87,6 @@ class CharacterFormContainer extends Component {
     .then(body => {
       this.setState({
         class_array: body.class_types,
-        selected_class: body.class_types[0],
-        placeholder: "Suggestion: " + body.class_types[0].suggested_task
       })
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`));
@@ -90,9 +94,9 @@ class CharacterFormContainer extends Component {
 
   render(){
     let classOptions = this.state.class_array.map((class_type => {
-          return(
-            <div className="column small-4">
-              <button type="button" className="class_button column" key={class_type.id} value={class_type.id} onClick={this.handleSelect}>
+          return (
+            <div className="column small-4" key={class_type.id}>
+              <button type="button" className="class_button column"  value={class_type.id} onClick={this.handleSelect}>
                 {class_type.name}
               </button>
             </div>
@@ -100,15 +104,34 @@ class CharacterFormContainer extends Component {
       }))
 
     let classType = this.state.selected_class
+    let classDetail
+    let errors = this.state.errors.map((error => {
+      return (
+        <span className="error_message">{error} <br/></span>
+      )
+    }))
+
+    if(this.state.placeholder === ""){
+      classDetail =
+      <ClassDetailTile
+        name="Choose a Class Below"
+        stat=""
+        description=""
+        imageUrl=""
+      />
+    } else {
+      classDetail=
+      <ClassDetailTile
+        name={classType.name}
+        stat={"Main Stat: " + classType.main_stat}
+        description={classType.description}
+        imageUrl={classType.image_url}
+      />
+    }
 
     return(
       <div className="row">
-        <ClassDetailTile
-          name={classType.name}
-          stat={classType.main_stat}
-          description={classType.description}
-          imageUrl={classType.image_url}
-        />
+        {classDetail}
         <div className="column" id="class_form">
           <form onSubmit={this.handleSubmit}>
             <label>
@@ -118,19 +141,22 @@ class CharacterFormContainer extends Component {
               </div>
             </label>
             <InputTile
+            name="task"
+            label="Give Your Hero a Task to Track:"
+            placeholder={this.state.placeholder}
+            value={this.state.task}
+            handleChange={this.handleChange}
+            />
+            <InputTile
               name="name"
               label="Choose a Character Name:"
               value={this.state.name}
               handleChange={this.handleChange}
             />
-            <InputTile
-              name="task"
-              label="Give Your Hero a Task to Track:"
-              placeholder={this.state.placeholder}
-              value={this.state.task}
-              handleChange={this.handleChange}
-            />
-            <button type="submit" className="submit_button">submit</button>
+            <div className="row submit_errors">
+            <button type="submit" className="submit_button column small-4">submit</button>
+            <div className="column small-7">{errors}</div>
+            </div>
           </form>
         </div>
       </div>

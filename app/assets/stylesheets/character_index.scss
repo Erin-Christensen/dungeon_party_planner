@@ -185,6 +185,14 @@ label {
   transform: translateY(4px);
 }
 
+.submit_errors {
+  padding: 15px;
+}
+
+.error_message {
+  color: red;
+}
+
 input:not([type]), input[type="text"], input[type="password"], input[type="date"], input[type="datetime"], input[type="datetime-local"], input[type="month"], input[type="week"], input[type="email"], input[type="number"], input[type="search"], input[type="tel"], input[type="time"], input[type="url"], input[type="color"], textarea {
   font-size: .6em;
 }

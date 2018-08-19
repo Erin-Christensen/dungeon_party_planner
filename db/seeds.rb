@@ -38,8 +38,15 @@ ClassType.create(
 
 Character.create(
   user: User.first,
+  class_type: "Wizard",
+  name: "Grandolph",
+  task: "read a book"
+)
+
+Character.create(
+  user: User.first,
   class_type: ClassType.first,
-  name: "Stronguy",
+  name: "Launchelot",
   task: "do 20 push ups"
 )
 
