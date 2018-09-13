@@ -9,6 +9,8 @@ class CharactersIndexContainer extends Component {
       characters_array: []
     }
     this.handleClick = this.handleClick.bind(this);
+    this.confirm = this.confirm.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
   }
 
   handleClick(event){
@@ -59,22 +61,58 @@ class CharactersIndexContainer extends Component {
     .catch(error => console.error(`Error in fetch: ${error.message}`));
   }
 
+  confirm(event) {
+    if(confirm('Are you sure you want to delete this character?')) {
+      this.handleDelete(event);
+    } else {
+      event.preventDefault();
+    }
+  }
+
+  handleDelete(event) {
+    event.preventDefault();
+
+    fetch(`/api/v1/${event.currentTarget.attributes.href.value}`, {
+      credentials: 'same-origin',
+      method: 'DELETE'
+    })
+    .then(response => {
+      if (response.ok) {
+        return response;
+      } else {
+        let errorMessage = `${response.status} (${response.statusText})`,
+          error = new Error(errorMessage);
+        throw(error);
+      }
+    })
+    .then(response => response.json())
+    .then(body => {
+      this.setState({
+        characters_array: body.characters
+      })
+    })
+    .catch(error => console.error(`Error in fetch: ${error.message}`));
+  }
+
   render(){
 
     let characters = this.state.characters_array.map((character => {
       return(
-        <CharacterTile
-          key={character.id}
-          id={character.id}
-          className={character.class_type.name}
-          level={character.level}
-          image_url={character.class_type.image_url}
-          image_tier={character.image_tier}
-          name={character.name}
-          task={character.task}
-          onClick={this.handleClick}
-          message={character.message}
-        />
+        <div key={character.id}>
+          <CharacterTile
+            key={character.id}
+            id={character.id}
+            className={character.class_type.name}
+            level={character.level}
+            image_url={character.class_type.image_url}
+            image_tier={character.image_tier}
+            name={character.name}
+            task={character.task}
+            onClick={this.handleClick}
+            message={character.message}
+          />
+          <Link to={`characters/${character.id}`} onClick={this.confirm}>Delete {character.name}</Link>
+        </div>
       )
     }))
 

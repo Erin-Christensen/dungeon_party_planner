@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
-      resources :characters, only: [:index, :show, :create, :new, :update]
+      resources :characters, only: [:index, :show, :create, :new, :update, :destroy]
       resources :class_types, only:[:index]
     end
   end
