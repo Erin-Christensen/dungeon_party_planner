@@ -4,7 +4,9 @@ class Api::V1::CharactersController < ApplicationController
 
   def index
     characters = Character.where(user: current_user.id)
-    characters = characters.sort.reverse
+    if characters != []
+      characters = characters.sort.reverse
+    end
     render json: characters
   end
 
@@ -50,6 +52,16 @@ class Api::V1::CharactersController < ApplicationController
     else
       render json: { errors: character.errors.full_messages}
     end
+  end
+
+  def destroy
+    character = Character.find(params[:id])
+    character.destroy
+    characters = Character.where(user: current_user.id)
+    if characters != []
+      characters = characters.sort.reverse
+    end
+    render json: characters
   end
 
   private

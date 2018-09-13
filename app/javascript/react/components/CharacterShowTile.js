@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { Link } from 'react-router';
 
 const CharacterShowTile = (props) => {
   let image = props.imageUrl+props.imageTier+".png"
@@ -16,6 +16,9 @@ const CharacterShowTile = (props) => {
       <div className="column small-4 move_right">
         <button className="task_button" id={props.id} onClick={props.onClick}>
           Complete Task
+        </button>
+        <button onClick={props.confirm} className="delete_character">
+        Delete
         </button>
       </div>
       <div className="column task">

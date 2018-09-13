@@ -1,7 +1,7 @@
 class Character < ApplicationRecord
   belongs_to :user
   belongs_to :class_type
-  has_many :character_skills
+  has_many :character_skills, dependent: :destroy
   has_many :skills, through: :character_skills
 
   validates :name, :image_tier, :user, :task, :class_type, presence: true

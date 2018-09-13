@@ -63,18 +63,20 @@ class CharactersIndexContainer extends Component {
 
     let characters = this.state.characters_array.map((character => {
       return(
-        <CharacterTile
-          key={character.id}
-          id={character.id}
-          className={character.class_type.name}
-          level={character.level}
-          image_url={character.class_type.image_url}
-          image_tier={character.image_tier}
-          name={character.name}
-          task={character.task}
-          onClick={this.handleClick}
-          message={character.message}
-        />
+        <div key={character.id}>
+          <CharacterTile
+            key={character.id}
+            id={character.id}
+            className={character.class_type.name}
+            level={character.level}
+            image_url={character.class_type.image_url}
+            image_tier={character.image_tier}
+            name={character.name}
+            task={character.task}
+            onClick={this.handleClick}
+            message={character.message}
+          />
+        </div>
       )
     }))
 
