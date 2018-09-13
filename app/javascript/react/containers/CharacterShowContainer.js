@@ -11,6 +11,8 @@ class CharacterShowContainer extends Component {
       messages: []
     }
     this.handleClick = this.handleClick.bind(this);
+    this.confirm = this.confirm.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
   }
 
   handleClick(event){
@@ -61,6 +63,37 @@ class CharacterShowContainer extends Component {
     .catch(error => console.error(`Error in venue show mount fetch: ${error.message}`));
   }
 
+  confirm(event) {
+    if(confirm('Are you sure you want to delete this character?')) {
+      this.handleDelete(event);
+    } else {
+      event.preventDefault();
+    }
+  }
+
+  handleDelete(event) {
+    event.preventDefault();
+
+    fetch(`/api/v1/characters/${this.props.params.id}`, {
+      credentials: 'same-origin',
+      method: 'DELETE'
+    })
+    .then(response => {
+      if (response.ok) {
+        return response;
+      } else {
+        let errorMessage = `${response.status} (${response.statusText})`,
+          error = new Error(errorMessage);
+        throw(error);
+      }
+    })
+    .then(response => response.json())
+    .then(body => {
+      this.props.router.push(`/characters`)
+    })
+    .catch(error => console.error(`Error in fetch: ${error.message}`));
+  }
+
   render(){
     let character = this.state.character
     let className
@@ -86,7 +119,7 @@ class CharacterShowContainer extends Component {
     }
 
     return(
-      <div>  
+      <div>
           <h2>{character.name}</h2>
           <CharacterShowTile
             id={character.id}
@@ -100,6 +133,7 @@ class CharacterShowContainer extends Component {
             statValue={character.stat}
             health={character.health}
             onClick={this.handleClick}
+            confirm={this.confirm}
           />
 
           <h2>Skills</h2>
