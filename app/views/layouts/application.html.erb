@@ -18,7 +18,11 @@
   <nav class="top-bar">
     <ul class="title-area">
       <li class="name">
-        <h1><a href="/">DungeonPartyPlanner</a></h1>
+        <%- if current_user -%>
+          <h1><a href="/characters">DungeonPartyPlanner</a></h1>
+        <%- else -%>
+          <h1><a href="/">DungeonPartyPlanner</a></h1>
+        <%- end -%>
       </li>
     </ul>
 
