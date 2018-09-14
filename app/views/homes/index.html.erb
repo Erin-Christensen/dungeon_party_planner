@@ -1,12 +1,25 @@
-<p>
-  Welcome to the dungeon party planner! sign up to create a party!
-</p>
-<%- if current_user -%>
-            <li>
-              <%= link_to 'go to party', characters_path %>
-            </li>
-          <%- else -%>
-            <li><%= link_to 'Sign Up', new_user_registration_path %></li>
-            <li><%= link_to 'Sign In', new_user_session_path %></li>
-            <%= link_to 'go to party', characters_path %>
-          <%- end -%>
+<div class="column landing">
+  <div class="row">
+    <h1>Welcome!</h1>
+    <img src="https://s3.amazonaws.com/dungeon-party-planner-production/images/characters/fighter/0.png" class="landing_pic"/>
+    <img src="https://s3.amazonaws.com/dungeon-party-planner-production/images/characters/wizard/0.png" class="landing_pic"/>
+    <h4>
+      Welcome to the dungeon party planner!<br/>
+      Sign up to create a party!<br/>
+    </h4>
+    Dungeon Party Planner allows you to create a party of fantasy
+    characters, choose their class and assign them a habit your want to
+    work on. Every time you check in your habit, your characters will
+    get stronger!
+  </div>
+  <div class="row">
+    <%- if current_user -%>
+        <div class="erb_button">
+          <%= link_to 'go to party', characters_path %>
+        </div>
+    <%- else -%>
+      <%= link_to 'Sign Up', new_user_registration_path %><br/>
+      <%= link_to 'Sign In', new_user_session_path %><br/>
+    <%- end -%>
+  </div>
+</div>
