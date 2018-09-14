@@ -4,6 +4,10 @@ $bkcw: #FFFFFF;
 $sc:  #aaa;
 $sc2: #eee;
 $bkcm: lightblue;
+$button_background_inactive: #E8C85D;
+
+$erb_border: 0 -3px $button_background_inactive, 0 -6px $bdc, 3px 0 $button_background_inactive, 3px -3px $bdc, 6px 0 $bdc, 0 3px $button_background_inactive, 0 6px $bdc, -3px 0 $button_background_inactive, -3px  3px $bdc, -6px 0 $bdc, -3px -3px $bdc, 3px 3px $bdc, 3px 9px $sc, 6px 6px $sc, 9px 3px $sc;
+
 
 .character_tile {
   font-size: 1.2em;
@@ -35,6 +39,7 @@ select {
 option {
   font-family: 'VT323', monospace;
 }
+
 .stat_name {
   margin-bottom: 3%;
   display: inline-block;
@@ -60,6 +65,7 @@ option {
 }
 
 .task_button {
+  background-color: #E8C85D;
   margin-top: 5%;
   box-shadow: 0 -3px $bkc, 0 -6px $bdc, 3px 0 $bkc, 3px -3px $bdc, 6px 0 $bdc, 0 3px $bkc, 0 6px $bdc, -3px 0 $bkc, -3px  3px $bdc, -6px 0 $bdc, -3px -3px $bdc, 3px 3px $bdc, 3px 9px $sc, 6px 6px $sc, 9px 3px $sc;
   display: inline-block;
@@ -128,11 +134,6 @@ option {
   animation-delay: 1s;
   animation-timing-function: ease-in;
   animation-fill-mode: forwards;
-}
-
-.back_button {
-  background-color: black;
-  margin-bottom: 0px;
 }
 
 @keyframes fade {
@@ -204,4 +205,27 @@ input:not([type]), input[type="text"], input[type="password"], input[type="date"
 .landing_pic {
   margin-top: 2%;
   margin-bottom: 6%;
+}
+
+
+.erb_button {
+  background-color: #E8C85D;
+  margin-top: 5%;
+  box-shadow: $erb_border;
+  display: inline-block;
+}
+
+.erb_button a {
+  color: black;
+  background-color: none;
+}
+
+.erb_button:hover {
+  background-color: #9e8431;
+}
+
+.erb_button:active {
+  background-color: #9e8431;
+  box-shadow: 0 -3px $bkc, 0 -6px $bdc, 3px 0 $bkc, 3px -3px $bdc, 6px 0 $bdc, 0 3px $bkc, 0 6px $bdc, -3px 0 $bkc, -3px  3px $bdc, -6px 0 $bdc, -3px -3px $bdc, 3px 3px $bdc, 3px 5px $sc, 6px 1px $sc;
+  transform: translateY(4px);
 }

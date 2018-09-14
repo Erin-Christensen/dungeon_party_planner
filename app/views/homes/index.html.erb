@@ -14,11 +14,12 @@
   </div>
   <div class="row">
     <%- if current_user -%>
-        <%= link_to 'go to party', characters_path %>
+        <div class="erb_button">
+          <%= link_to 'go to party', characters_path %>
+        </div>
     <%- else -%>
       <%= link_to 'Sign Up', new_user_registration_path %><br/>
       <%= link_to 'Sign In', new_user_session_path %><br/>
-      <%= link_to 'go to party', characters_path %><br/>
     <%- end -%>
   </div>
 </div>
