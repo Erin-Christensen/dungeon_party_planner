@@ -2,10 +2,10 @@ require "rails_helper"
 
 RSpec.describe Api::V1::CharactersController, type: :controller do
   let!(:signed_in_user) { FactoryBot.create(:user) }
-  let!(:random_user) { FactoryBot.create(:user) }
   let!(:first_character) { FactoryBot.create(:character, user: signed_in_user) }
   let!(:second_character) { FactoryBot.create(:character, name: "bob", user: signed_in_user) }
-  let!(:random_character) { FactoryBot.create(:character, user: random_user) }
+  let!(:some_skill) { FactoryBot.create(:skill)}
+
 
   describe "GET#index" do
 
@@ -56,6 +56,56 @@ RSpec.describe Api::V1::CharactersController, type: :controller do
       get :show, params: {id: first_character.id}
 
       expect(response.status).to eq 302
+    end
+  end
+
+  describe "PATCH#update" do
+    it "should change the information for a single venue if you are an admin" do
+      sign_in signed_in_user
+
+      patch_json = {
+        id: first_character
+      }
+      4.times do
+        get(:update, params: patch_json)
+      end
+      returned_json = JSON.parse(response.body)
+      character = returned_json["characters"][-1]
+      expect(response.status).to eq 200
+      expect(response.content_type).to eq("application/json")
+      expect(character["level"]).to eq 4
+      expect(character["character_skills"].count).to eq 1
+
+      sign_out signed_in_user
+    end
+  end
+
+  describe "DELETE#destroy" do
+    it "should delete a character" do
+      sign_in signed_in_user
+
+      patch_json = {
+        id: first_character
+      }
+      4.times do
+        get(:update, params: patch_json)
+      end
+      expect(CharacterSkill.count).to eq 1
+
+      expect {delete :destroy, params: { id: first_character }}.to change(Character, :count).by(-1)
+      expect(CharacterSkill.count).to eq 0
+      sign_out signed_in_user
+    end
+
+    it "should delete the character's dependencies" do
+      sign_in signed_in_user
+
+      4.times do
+        get(:update, params: { id: first_character })
+      end
+      expect {delete :destroy, params: { id: first_character }}.to change(CharacterSkill, :count).by(-1)
+      
+      sign_out signed_in_user
     end
   end
 
