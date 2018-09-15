@@ -75,7 +75,7 @@ RSpec.describe Api::V1::CharactersController, type: :controller do
       expect(response.content_type).to eq("application/json")
       expect(character["level"]).to eq 4
       expect(character["character_skills"].count).to eq 1
-      
+
       sign_out signed_in_user
     end
   end
@@ -84,8 +84,27 @@ RSpec.describe Api::V1::CharactersController, type: :controller do
     it "should delete a character" do
       sign_in signed_in_user
 
-      expect {delete :destroy, params: { id: first_character }}.to change(Character, :count).by(-1)
+      patch_json = {
+        id: first_character
+      }
+      4.times do
+        get(:update, params: patch_json)
+      end
+      expect(CharacterSkill.count).to eq 1
 
+      expect {delete :destroy, params: { id: first_character }}.to change(Character, :count).by(-1)
+      expect(CharacterSkill.count).to eq 0
+      sign_out signed_in_user
+    end
+
+    it "should delete the character's dependencies" do
+      sign_in signed_in_user
+
+      4.times do
+        get(:update, params: { id: first_character })
+      end
+      expect {delete :destroy, params: { id: first_character }}.to change(CharacterSkill, :count).by(-1)
+      
       sign_out signed_in_user
     end
   end
