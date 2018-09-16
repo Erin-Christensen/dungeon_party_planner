@@ -1,18 +1,83 @@
-$bdc:  #000;
-$bkc:  #9E8431;
-$bkcw: #FFFFFF;
-$sc:  #aaa;
-$sc2: #eee;
+$buttoncolor_border: #000000;
+$buttoncolor_background_active: #9E8431;
+$buttoncolor_background_inactive: #E8C85D;
+$buttoncolor_hover: #E0B524;
+$buttoncolor_shadow:  #aaa;
+
+$backgroundcolor_white: #FFFFFF;
+$taskcolor_shadow: #f4f4f4;
+$taskcolor_background: #efefef;
 $bkcm: lightblue;
-$button_background_inactive: #E8C85D;
+$taskcolor_highlight: #e8e8e8;
 
-$erb_border: 0 -3px $button_background_inactive, 0 -6px $bdc, 3px 0 $button_background_inactive, 3px -3px $bdc, 6px 0 $bdc, 0 3px $button_background_inactive, 0 6px $bdc, -3px 0 $button_background_inactive, -3px  3px $bdc, -6px 0 $bdc, -3px -3px $bdc, 3px 3px $bdc, 3px 9px $sc, 6px 6px $sc, 9px 3px $sc;
+$button_boxshadow_inactive:
+  0 -3px $buttoncolor_background_inactive,
+  0 -6px $buttoncolor_border,
+  3px 0 $buttoncolor_background_inactive,
+  3px -3px $buttoncolor_border,
+  6px 0 $buttoncolor_border,
+  0 3px $buttoncolor_background_inactive,
+  0 6px $buttoncolor_border,
+  -3px 0 $buttoncolor_background_inactive,
+  -3px  3px $buttoncolor_border,
+  -6px 0 $buttoncolor_border,
+  -3px -3px $buttoncolor_border,
+  3px 3px $buttoncolor_border,
+  3px 9px $buttoncolor_shadow,
+  6px 6px $buttoncolor_shadow,
+  9px 3px $buttoncolor_shadow;
 
+$button_boxshadow_active:
+  0 -3px $buttoncolor_background_active,
+  0 -6px $buttoncolor_border,
+  3px 0 $buttoncolor_background_active,
+  3px -3px $buttoncolor_border,
+  6px 0 $buttoncolor_border,
+  0 3px $buttoncolor_background_active,
+  0 6px $buttoncolor_border,
+  -3px 0 $buttoncolor_background_active,
+  -3px  3px $buttoncolor_border,
+  -6px 0 $buttoncolor_border,
+  -3px -3px $buttoncolor_border,
+  3px 3px $buttoncolor_border,
+  3px 5px $buttoncolor_shadow,
+  6px 1px $buttoncolor_shadow;
+
+$tile_boxshadow:
+  0 -3px $backgroundcolor_white,
+  0 -6px $buttoncolor_border,
+  3px 0 $backgroundcolor_white,
+  3px -3px $buttoncolor_border,
+  6px 0 $buttoncolor_border,
+  0 3px $backgroundcolor_white,
+  0 6px $buttoncolor_border,
+  -3px 0 $backgroundcolor_white,
+  -3px  3px $buttoncolor_border,
+  -6px 0 $buttoncolor_border,
+  -3px -3px $buttoncolor_border,
+  3px 3px $buttoncolor_border,
+  3px 9px $buttoncolor_shadow,
+  6px 6px $buttoncolor_shadow,
+  9px 3px $buttoncolor_shadow;
+
+$task_boxshadow:
+  0 -3px $taskcolor_background,
+  0 -6px $taskcolor_highlight,
+  3px 0 $taskcolor_background,
+  3px -3px $taskcolor_highlight,
+  6px 0 $taskcolor_shadow,
+  0 3px $taskcolor_background,
+  0 6px $taskcolor_shadow,
+  -3px 0 $taskcolor_background,
+  -3px  3px $taskcolor_highlight,
+  -6px 0 $taskcolor_highlight,
+  -3px -3px $taskcolor_highlight,
+  3px 3px $taskcolor_shadow;
 
 .character_tile {
   font-size: 1.2em;
   padding: 5px 10px 20px 10px;
-  box-shadow: 0 -3px $bkcw, 0 -6px $bdc, 3px 0 $bkcw, 3px -3px $bdc, 6px 0 $bdc, 0 3px $bkcw, 0 6px $bdc, -3px 0 $bkcw, -3px  3px $bdc, -6px 0 $bdc, -3px -3px $bdc, 3px 3px $bdc, 3px 9px $sc, 6px 6px $sc, 9px 3px $sc;
+  box-shadow: $tile_boxshadow;
   width: 600px;
   margin-bottom: 2%;
   margin-left: auto;
@@ -27,7 +92,7 @@ $erb_border: 0 -3px $button_background_inactive, 0 -6px $bdc, 3px 0 $button_back
   margin-right: auto;
   float: none;
   font-size: 1.2em;
-  box-shadow: 0 -3px $bkcw, 0 -6px $bdc, 3px 0 $bkcw, 3px -3px $bdc, 6px 0 $bdc, 0 3px $bkcw, 0 6px $bdc, -3px 0 $bkcw, -3px  3px $bdc, -6px 0 $bdc, -3px -3px $bdc, 3px 3px $bdc, 3px 9px $sc, 6px 6px $sc, 9px 3px $sc;
+  box-shadow: $tile_boxshadow;
   width: 600px;
 }
 
@@ -53,32 +118,32 @@ option {
   margin-left: auto;
   margin-right: auto;
   font-size: 1.2em;
-  box-shadow: 0 -3px $bkcw, 0 -6px $bdc, 3px 0 $bkcw, 3px -3px $bdc, 6px 0 $bdc, 0 3px $bkcw, 0 6px $bdc, -3px 0 $bkcw, -3px  3px $bdc, -6px 0 $bdc, -3px -3px $bdc, 3px 3px $bdc, 3px 9px $sc, 6px 6px $sc, 9px 3px $sc;
+  box-shadow: $tile_boxshadow;
   width: 600px;
   height: 300px;
 }
 
 .submit_button {
   margin-top: 5%;
-  box-shadow: 0 -3px $bkc, 0 -6px $bdc, 3px 0 $bkc, 3px -3px $bdc, 6px 0 $bdc, 0 3px $bkc, 0 6px $bdc, -3px 0 $bkc, -3px  3px $bdc, -6px 0 $bdc, -3px -3px $bdc, 3px 3px $bdc, 3px 9px $sc, 6px 6px $sc, 9px 3px $sc;
+  box-shadow: $button_boxshadow_inactive;
   display: inline-block;
 }
 
 .task_button {
-  background-color: #E8C85D;
+  background-color: $buttoncolor_background_inactive;
   margin-top: 5%;
-  box-shadow: 0 -3px $bkc, 0 -6px $bdc, 3px 0 $bkc, 3px -3px $bdc, 6px 0 $bdc, 0 3px $bkc, 0 6px $bdc, -3px 0 $bkc, -3px  3px $bdc, -6px 0 $bdc, -3px -3px $bdc, 3px 3px $bdc, 3px 9px $sc, 6px 6px $sc, 9px 3px $sc;
+  box-shadow: $button_boxshadow_inactive;
   display: inline-block;
   float: right;
 }
 
 .task_button:hover {
-  background-color: #9e8431;
+  background-color: $buttoncolor_hover;
 }
 
 .task_button:active {
-  background-color: #9e8431;
-  box-shadow: 0 -3px $bkc, 0 -6px $bdc, 3px 0 $bkc, 3px -3px $bdc, 6px 0 $bdc, 0 3px $bkc, 0 6px $bdc, -3px 0 $bkc, -3px  3px $bdc, -6px 0 $bdc, -3px -3px $bdc, 3px 3px $bdc, 3px 5px $sc, 6px 1px $sc;
+  background-color: $buttoncolor_background_active;
+  box-shadow: $button_boxshadow_active;
   transform: translateY(4px);
 }
 
@@ -94,13 +159,13 @@ option {
   margin-left: 50%;
   margin-top: 2%;
   margin-bottom: 5%;
-  box-shadow: 0 -3px $bkc, 0 -6px $bdc, 3px 0 $bkc, 3px -3px $bdc, 6px 0 $bdc, 0 3px $bkc, 0 6px $bdc, -3px 0 $bkc, -3px  3px $bdc, -6px 0 $bdc, -3px -3px $bdc, 3px 3px $bdc, 3px 9px $sc, 6px 6px $sc, 9px 3px $sc;
+  box-shadow: $button_boxshadow_inactive;
 }
 
 .task {
   margin-top: 2%;
-  box-shadow: 0 -3px $sc2, 0 -6px $sc2, 3px 0 $sc2, 3px -3px $sc2, 6px 0 $sc2, 0 3px $sc2, 0 6px $sc2, -3px 0 $sc2, -3px  3px $sc2, -6px 0 $sc2, -3px -3px $sc2, 3px 3px $sc2;
-  background-color: $sc2;
+  box-shadow: $task_boxshadow;
+  background-color: $taskcolor_background;
 }
 
 .character_name {
@@ -126,7 +191,7 @@ option {
 }
 
 .message {
-  box-shadow: 0 -3px $bkcm, 0 -6px $bdc, 3px 0 $bkcm, 3px -3px $bdc, 6px 0 $bdc, 0 3px $bkcm, 0 6px $bdc, -3px 0 $bkcm, -3px  3px $bdc, -6px 0 $bdc, -3px -3px $bdc, 3px 3px $bdc, 3px 9px $sc, 6px 6px $sc, 9px 3px $sc;
+  box-shadow: 0 -3px $bkcm, 0 -6px $buttoncolor_border, 3px 0 $bkcm, 3px -3px $buttoncolor_border, 6px 0 $buttoncolor_border, 0 3px $bkcm, 0 6px $buttoncolor_border, -3px 0 $bkcm, -3px  3px $buttoncolor_border, -6px 0 $buttoncolor_border, -3px -3px $buttoncolor_border, 3px 3px $buttoncolor_border, 3px 9px $buttoncolor_shadow, 6px 6px $buttoncolor_shadow, 9px 3px $buttoncolor_shadow;
   background-color: lightblue;
   font-size: .8em;
   animation-name: fade;
@@ -168,21 +233,20 @@ label {
 
 .class_button{
   color: black;
-
   text-align: center;
   background-color: white;
-  box-shadow: 0 -3px $bkcw, 0 -6px $bdc, 3px 0 $bkcw, 3px -3px $bdc, 6px 0 $bdc, 0 3px $bkcw, 0 6px $bdc, -3px 0 $bkcw, -3px  3px $bdc, -6px 0 $bdc, -3px -3px $bdc, 3px 3px $bdc, 3px 9px $sc, 6px 6px $sc, 9px 3px $sc;
+  box-shadow: $tile_boxshadow;
 }
 
 .class_button:hover{
   color: black;
-  background-color: $sc2;
+  background-color: $taskcolor_shadow;
 }
 
 .class_button:focus{
   color: black;
-  background-color: $sc;
-  box-shadow: 0 -3px $sc, 0 -6px $bdc, 3px 0 $sc, 3px -3px $bdc, 6px 0 $bdc, 0 3px $sc, 0 6px $bdc, -3px 0 $sc, -3px  3px $bdc, -6px 0 $bdc, -3px -3px $bdc, 3px 3px $bdc;
+  background-color: $buttoncolor_shadow;
+  box-shadow: 0 -3px $buttoncolor_shadow, 0 -6px $buttoncolor_border, 3px 0 $buttoncolor_shadow, 3px -3px $buttoncolor_border, 6px 0 $buttoncolor_border, 0 3px $buttoncolor_shadow, 0 6px $buttoncolor_border, -3px 0 $buttoncolor_shadow, -3px  3px $buttoncolor_border, -6px 0 $buttoncolor_border, -3px -3px $buttoncolor_border, 3px 3px $buttoncolor_border;
   transform: translateY(4px);
 }
 
@@ -209,9 +273,9 @@ input:not([type]), input[type="text"], input[type="password"], input[type="date"
 
 
 .erb_button {
-  background-color: #E8C85D;
+  background-color: $buttoncolor_background_inactive;
   margin-top: 5%;
-  box-shadow: $erb_border;
+  box-shadow: $button_boxshadow_inactive;
   display: inline-block;
 }
 
@@ -221,11 +285,11 @@ input:not([type]), input[type="text"], input[type="password"], input[type="date"
 }
 
 .erb_button:hover {
-  background-color: #9e8431;
+  background-color: $buttoncolor_hover;
 }
 
 .erb_button:active {
-  background-color: #9e8431;
-  box-shadow: 0 -3px $bkc, 0 -6px $bdc, 3px 0 $bkc, 3px -3px $bdc, 6px 0 $bdc, 0 3px $bkc, 0 6px $bdc, -3px 0 $bkc, -3px  3px $bdc, -6px 0 $bdc, -3px -3px $bdc, 3px 3px $bdc, 3px 5px $sc, 6px 1px $sc;
+  background-color:$buttoncolor_background_active;
+  box-shadow: $button_boxshadow_active;
   transform: translateY(4px);
 }
