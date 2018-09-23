@@ -4,12 +4,14 @@ import React from 'react';
 import 'jasmine-ajax';
 import fetch from 'isomorphic-fetch';
 
+
 Object.assign(global, {
   jasmineEnzyme,
   mount,
   React,
   shallow,
-  fetch
+  fetch,
+
 });
 
 beforeEach(() => {

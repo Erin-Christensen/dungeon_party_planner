@@ -16,7 +16,7 @@ describe('CharactersIndexContainer', () => {
     user_id: 1,
     class_type: class_type,
     name: 'SquirtleMan',
-    level: 0,
+    level: 1,
     image_url: '/wow',
     image_tier: 1,
     task: 'do dishes',
@@ -24,7 +24,7 @@ describe('CharactersIndexContainer', () => {
     health: 10,
     message: 'new character created'
   }
-  
+
   let characters = [character1]
 
   beforeEach(() => {
@@ -36,7 +36,6 @@ describe('CharactersIndexContainer', () => {
       }
     });
     wrapper = mount(<CharactersIndexContainer
-
     />);
   });
 
@@ -55,12 +54,12 @@ describe('CharactersIndexContainer', () => {
     }, 0)
   })
 
-  it('renders a CharacterTile', (done) => {
+  it('renders a CharacterTile with expected props', (done) => {
     setTimeout(() => {
       expect(wrapper.find(CharacterTile).props()).toEqual({
         id: 1,
         className: 'Fighter',
-        level: 0,
+        level: 1,
         image_url: '/wow',
         image_tier: 1,
         name: 'SquirtleMan',
