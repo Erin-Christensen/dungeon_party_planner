@@ -38,26 +38,3 @@ describe('CharacterShowTile', () => {
     });
 
 })
-
-
-
-
-// it('updates the character level when task is clicked', (done) => {
-//   let options = {
-//     credentials: 'same-origin',
-//     method: 'PATCH',
-//     headers: {'Content-Type': 'application/json'}
-//   }
-// fetchMock.mock('/api/v1/characters/${character1.id}', {
-//   status: 200,
-//   body: character1
-// }, options)
-// setTimeout(() => {
-//   let characterLevel = wrapper.find(CharacterTile).props().level
-//   wrapper.find('.task_button').simulate('click')
-//   setTimeout(() => {
-//     expect(wrapper.find(CharacterTile).props().level).toEqual(characterLevel + 1)
-//     done()
-//   })
-// }, 0)
-// })
