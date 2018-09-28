@@ -91,4 +91,19 @@ describe('CharactersIndexContainer', () => {
       }, 0)
     })
 
+    it('shows an error message when there is an error in response', (done) => {
+      fetchMock.post('/api/v1/characters', {
+        status: 200,
+        body: {
+          errors: ["Class type must exist"]
+        }
+      });
+      wrapper.find('form').simulate('submit')
+      setTimeout(() => {
+        let error_message = wrapper.find('.error_message')
+        expect(error_message.text()).toContain("Class type must exist")
+        done()
+      }, 0)
+    })
+
 })
