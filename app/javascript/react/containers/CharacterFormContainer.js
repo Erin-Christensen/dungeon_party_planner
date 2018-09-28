@@ -17,6 +17,7 @@ class CharacterFormContainer extends Component {
     this.handleSelect = this.handleSelect.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleRedirect = this.handleRedirect.bind(this);
   }
 
   handleSelect(event) {
@@ -26,6 +27,10 @@ class CharacterFormContainer extends Component {
       placeholder: "Suggestion: " + selected.suggested_task,
       task: ""
     });
+  }
+
+  handleRedirect(){
+    this.props.router.push(`/characters`)
   }
 
   handleChange(event) {
@@ -63,7 +68,7 @@ class CharacterFormContainer extends Component {
             errors: body.errors,
           })
         } else {
-          this.props.router.push(`/characters`)
+          this.handleRedirect()
         }
       }
     )
