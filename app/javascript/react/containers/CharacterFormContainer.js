@@ -101,7 +101,8 @@ class CharacterFormContainer extends Component {
     let classOptions = this.state.class_array.map((class_type => {
           return (
             <div className="column small-4" key={class_type.id}>
-              <button type="button" className="class_button column"  value={class_type.id} onClick={this.handleSelect}>
+              <button type="button" className="class_button column"  value={class_type.id} onClick={this.handleSelect}
+              key={class_type.name}>
                 {class_type.name}
               </button>
             </div>

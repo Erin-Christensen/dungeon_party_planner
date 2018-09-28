@@ -4,6 +4,7 @@ import fetchMock from 'fetch-mock';
 describe('CharactersIndexContainer', () => {
   let wrapper;
   let handleRedirect;
+  let handleSelect;
   let fighter = {
     id: 1,
     name: "Fighter",
@@ -39,12 +40,14 @@ describe('CharactersIndexContainer', () => {
 
   beforeEach(() => {
     handleRedirect = spyOn(CharacterFormContainer.prototype, 'handleRedirect')
+    //handleSelect = jasmine.createSpy('onClick spy')
     fetchMock.get(`/api/v1/class_types`, {
       status: 200,
       body: {
         class_types: class_types
       }
     });
+    handleSelect = spyOn(CharacterFormContainer.prototype, 'handleSelect')
     wrapper = mount(<CharacterFormContainer
     />);
   });
@@ -76,34 +79,43 @@ describe('CharactersIndexContainer', () => {
     }, 0)
   })
 
+  it('renders class selection buttons based on fetched class data', (done) => {
+    setTimeout(() => {
+      expect(wrapper.find('.class_button').first().text()).toEqual('Fighter')
+      wrapper.find('.class_button').first().simulate('click')
+      expect(handleSelect).toHaveBeenCalled();
+      done()
+    }, 0)
+  })
+
   it('redirects if a new character is sucessfully created', (done) => {
-      fetchMock.post('/api/v1/characters', {
-        status: 201,
-        body: newCharacter
-      });
+    fetchMock.post('/api/v1/characters', {
+      status: 201,
+      body: newCharacter
+    });
 
-      setTimeout(() => {
-        wrapper.find('form').simulate('submit')
-        setTimeout(() => {
-          expect(handleRedirect).toHaveBeenCalled();
-          done()
-        })
-      }, 0)
-    })
-
-    it('shows an error message when there is an error in response', (done) => {
-      fetchMock.post('/api/v1/characters', {
-        status: 200,
-        body: {
-          errors: ["Class type must exist"]
-        }
-      });
+    setTimeout(() => {
       wrapper.find('form').simulate('submit')
       setTimeout(() => {
-        let error_message = wrapper.find('.error_message')
-        expect(error_message.text()).toContain("Class type must exist")
+        expect(handleRedirect).toHaveBeenCalled();
         done()
-      }, 0)
-    })
+      })
+    }, 0)
+  })
+
+  it('shows an error message when there is an error in response', (done) => {
+    fetchMock.post('/api/v1/characters', {
+      status: 200,
+      body: {
+        errors: ["Class type must exist"]
+      }
+    });
+    wrapper.find('form').simulate('submit')
+    setTimeout(() => {
+      let error_message = wrapper.find('.error_message')
+      expect(error_message.text()).toContain("Class type must exist")
+      done()
+    }, 0)
+  })
 
 })
