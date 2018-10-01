@@ -174,7 +174,7 @@ option {
 }
 
 .detail_image {
-  margin-bottom: 3%;
+  margin: 3%;
   width: 80px;
 }
 
@@ -292,4 +292,14 @@ input:not([type]), input[type="text"], input[type="password"], input[type="date"
   background-color:$buttoncolor_background_active;
   box-shadow: $button_boxshadow_active;
   transform: translateY(4px);
+}
+
+.icons {
+  margin-top: 10%;
+}
+
+.icon {
+  width: 120px;
+  margin-left: 6%;
+  margin-right: 6%;
 }
